@@ -2,6 +2,10 @@ import * as React from 'react';
 import './style.css';
 import styled from 'styled-components';
 
+interface Test {
+  name: string;
+}
+
 const IconWrapper = styled.div`
 display:flex;
 background-color: lightgrey;

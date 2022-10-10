@@ -21,8 +21,14 @@ const searchIcon = {
     'https://img.freepik.com/premium-vector/search-icon-magnifying-glass-symbol-outline-icon_543062-139.jpg?w=2000',
   imgSize: 25,
 };
-
-const appMetaData = [
+interface IAppInfo {
+  id: number;
+  appName: string;
+  appDescription: string;
+  appVersion: string;
+  appType: string;
+}
+const appMetaData: IAppInfo[] = [
   {
     id: 1,
     appName: 'Workplace Incident Management',

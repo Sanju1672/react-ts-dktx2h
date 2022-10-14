@@ -20,7 +20,7 @@ const Header = styled.h4`
     white-space: nowrap;
     width: calc(100% - 10px);
 `;
-const AppVersion = styled.span`
+const AppVersion1 = styled.span`
    margin-bottom: 4px;
    margin-top: 16px;
 `;
@@ -86,14 +86,14 @@ const build = {
 };
 interface IAppTileProps {
   data: {
-    appName: string;
-    appDescription: string;
-    appVersion: string;
+    AppDisplayName: string;
+    AppDescription: string;
+    AppVersion: string;
     appType: string;
   };
 }
 export default function AppTile(props: IAppTileProps) {
-  const { appName, appDescription, appVersion, appType } = props.data;
+  const { AppDisplayName, AppDescription, AppVersion, appType } = props.data;
 
   return (
     <React.Fragment>
@@ -109,9 +109,9 @@ export default function AppTile(props: IAppTileProps) {
         </IconWrapper>
 
         <Flex1>
-          <Header>{appName}</Header>
-          <span>{appDescription}</span>
-          <AppVersion>{appVersion}</AppVersion>
+          <Header>{AppDisplayName}</Header>
+          <span>{AppDescription}</span>
+          <AppVersion1>{AppVersion}</AppVersion1>
           <Image src={appType === 'android' ? android.imgUrl : apple.imgUrl} />
 
           <br />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import AppTile from './AppTile';
 import './style.css';
 import styled from 'styled-components';
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 
 const SearchWrapper = styled.div`
  display:flex;

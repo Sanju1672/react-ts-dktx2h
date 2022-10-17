@@ -86,6 +86,7 @@ const build = {
 };
 interface IAppTileProps {
   data: {
+    AppId: string;
     AppDisplayName: string;
     AppDescription: string;
     AppVersion: string;
@@ -94,7 +95,7 @@ interface IAppTileProps {
   };
 }
 export default function AppTile(props: IAppTileProps) {
-  const { AppDisplayName, AppDescription, AppVersion, Android, iOS } =
+  const { AppId, AppDisplayName, AppDescription, AppVersion, Android, iOS } =
     props.data;
 
   return (

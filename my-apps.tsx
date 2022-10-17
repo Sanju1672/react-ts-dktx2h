@@ -22,7 +22,7 @@ const searchIcon = {
   imgSize: 25,
 };
 interface IAppInfo {
-  id: number;
+  AppId: number;
   AppDisplayName: string;
   AppDescription: string;
   AppVersion: string;
@@ -109,7 +109,7 @@ const MyAppsWrapper = styled.div`
 export default function MyApps(props) {
   // const [searchText, setSearchText] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
-  // const [appTypeData, setAppTypeData] = useState(appMetaData);
+  // const [appTypeData, setAppTypeData] = useState();
   const [appInfo, setAppInfo] = useState([]);
 
   React.useEffect(() => {
@@ -130,7 +130,9 @@ export default function MyApps(props) {
     const filteredApps = appInfo.filter((app) =>
       app.AppDisplayName.toLowerCase().includes(event.target.value)
     );
+
     setAppInfo(filteredApps);
+
     // setSearchText(event.target.value);
   }, []);
   // const search = useMemo(
@@ -148,7 +150,7 @@ export default function MyApps(props) {
     } else if (event.target.value === 'Android') {
       const result = appInfo.filter((app) => app.Android === true);
       setAppInfo(result);
-    } else if (event.target.value === 'iOS') {
+    } else if (event.target.value === 'IOS') {
       const output = appInfo.filter((app) => app.iOS === true);
       setAppInfo(output);
     }
@@ -182,7 +184,7 @@ export default function MyApps(props) {
       </SearchWrapper>
       <MyAppsWrapper className="my-apps">
         {appInfo.map((app) => (
-          <AppTile key={app.id} data={app} />
+          <AppTile key={app.AppId} data={app} />
         ))}
       </MyAppsWrapper>
     </React.Fragment>

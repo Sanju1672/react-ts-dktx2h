@@ -89,11 +89,13 @@ interface IAppTileProps {
     AppDisplayName: string;
     AppDescription: string;
     AppVersion: string;
-    appType: string;
+    Android: boolean;
+    iOS: boolean;
   };
 }
 export default function AppTile(props: IAppTileProps) {
-  const { AppDisplayName, AppDescription, AppVersion, appType } = props.data;
+  const { AppDisplayName, AppDescription, AppVersion, Android, iOS } =
+    props.data;
 
   return (
     <React.Fragment>
@@ -112,7 +114,7 @@ export default function AppTile(props: IAppTileProps) {
           <Header>{AppDisplayName}</Header>
           <span>{AppDescription}</span>
           <AppVersion1>{AppVersion}</AppVersion1>
-          <Image src={appType === 'android' ? android.imgUrl : apple.imgUrl} />
+          <Image src={Android === true ? android.imgUrl : apple.imgUrl} />
 
           <br />
           <br />

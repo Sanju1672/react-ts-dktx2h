@@ -6,7 +6,7 @@ import { useState, useCallback } from 'react';
 
 const SearchWrapper = styled.div`
  display:flex;
-height:20px;
+ height:20px;
  width:100%;
 background-color:#fdfbfb;
 border : 2px black;
@@ -109,19 +109,21 @@ export default function MyApps(props) {
   // const [searchText, setSearchText] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [appTypeData, setAppTypeData] = useState(appMetaData);
-  const [appInfo , setAppInfo] = useState([]);
-   
+  const [appInfo, setAppInfo] = useState([]);
+
   React.useEffect(() => {
-    fetch('https://mobilebuild.nxone.com/MobileBuildService/MobileAppService.svc/GetMobileApps'
-    ,{
-   headers: {
-     "Content-Type" : "application/json",
-    "authorization" :"Basic bnhvbmVcbS5zaGFybWE6UGFzc0B3b3JkODg=" }
-    })
+    fetch(
+      'https://mobilebuild.nxone.com/MobileBuildService/MobileAppService.svc/GetMobileApps',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: 'Basic bnhvbmVcbS5zaGFybWE6UGFzc0B3b3JkODg=',
+        },
+      }
+    )
       .then((response) => response.json())
       .then((json) => setAppInfo(json));
-},[]);
-  
+  }, []);
 
   const handleChange = useCallback(
     (event) => {
@@ -181,9 +183,8 @@ export default function MyApps(props) {
         </div>
       </SearchWrapper>
       <MyAppsWrapper className="my-apps">
-        
-        {appInfo.map((app) => ( 
-         <AppTile key={app.id} data={app} />
+        {appInfo.map((app) => (
+          <AppTile key={app.id} data={app} />
         ))}
       </MyAppsWrapper>
     </React.Fragment>

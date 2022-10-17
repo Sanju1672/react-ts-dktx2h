@@ -130,7 +130,6 @@ export default function MyApps(props) {
     const filteredApps = appInfo.filter((app) =>
       app.AppDisplayName.toLowerCase().includes(event.target.value)
     );
-
     setAppInfo(filteredApps);
 
     // setSearchText(event.target.value);

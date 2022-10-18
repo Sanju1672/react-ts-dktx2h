@@ -142,7 +142,6 @@ export default function MyApps(props) {
             app.AppDisplayName.toLowerCase().includes(event.target.value) &&
             app.Android === true
         );
-
         setAppTypeData(filteredAndroidApps);
       } else {
         const filteredIosApps = appInfo.filter(

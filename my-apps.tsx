@@ -109,8 +109,8 @@ const MyAppsWrapper = styled.div`
 export default function MyApps(props) {
   // const [searchText, setSearchText] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
-  // const [appTypeData, setAppTypeData] = useState();
   const [appInfo, setAppInfo] = useState([]);
+  const [appTypeData, setAppTypeData] = useState(appInfo);
 
   React.useEffect(() => {
     fetch(
@@ -123,17 +123,40 @@ export default function MyApps(props) {
       }
     )
       .then((response) => response.json())
-      .then((json) => setAppInfo(json));
+      .then((json) => {
+        setAppInfo(json);
+        setAppTypeData(json);
+      });
   }, []);
 
-  const handleChange = useCallback((event) => {
-    const filteredApps = appInfo.filter((app) =>
-      app.AppDisplayName.toLowerCase().includes(event.target.value)
-    );
-    setAppInfo(filteredApps);
+  const handleChange = useCallback(
+    (event) => {
+      if (typeFilter === 'All') {
+        const filteredApps = appInfo.filter((app) =>
+          app.AppDisplayName.toLowerCase().includes(event.target.value)
+        );
+        setAppTypeData(filteredApps);
+      } else if (typeFilter === 'Android') {
+        const filteredAndroidApps = appInfo.filter(
+          (app) =>
+            app.AppDisplayName.toLowerCase().includes(event.target.value) &&
+            app.Android === true
+        );
 
-    // setSearchText(event.target.value);
-  }, []);
+        setAppTypeData(filteredAndroidApps);
+      } else {
+        const filteredIosApps = appInfo.filter(
+          (app) =>
+            app.AppDisplayName.toLowerCase().includes(event.target.value) &&
+            app.iOS === true
+        );
+
+        setAppTypeData(filteredIosApps);
+      }
+      // setSearchText(event.target.value);
+    },
+    [appTypeData, typeFilter]
+  );
   // const search = useMemo(
   // () =>
   //  appTypeData.filter((app) =>
@@ -145,13 +168,13 @@ export default function MyApps(props) {
   const ontypeChange = (event) => {
     setTypeFilter(event.target.value);
     if (event.target.value === 'All') {
-      setAppInfo(appInfo);
+      setAppTypeData(appInfo);
     } else if (event.target.value === 'Android') {
       const result = appInfo.filter((app) => app.Android === true);
-      setAppInfo(result);
+      setAppTypeData(result);
     } else if (event.target.value === 'IOS') {
       const output = appInfo.filter((app) => app.iOS === true);
-      setAppInfo(output);
+      setAppTypeData(output);
     }
   };
 
@@ -182,7 +205,7 @@ export default function MyApps(props) {
         </div>
       </SearchWrapper>
       <MyAppsWrapper className="my-apps">
-        {appInfo.map((app) => (
+        {appTypeData.map((app) => (
           <AppTile key={app.AppId} data={app} />
         ))}
       </MyAppsWrapper>

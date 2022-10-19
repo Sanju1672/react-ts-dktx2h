@@ -3,12 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "@babel/core": "^7.0.0",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.10.10",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
+    "null": "2.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-is": "18.2.0",
+    "styled-components": "5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",

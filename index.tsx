@@ -11,7 +11,6 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <AuthenticationAppTile />
-    // <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-    // <MyApps filterAppVersion="Version 1" />
+    //
   </StrictMode>
 );

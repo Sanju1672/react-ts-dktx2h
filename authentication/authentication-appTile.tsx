@@ -25,7 +25,13 @@ const Flex = styled.div`
 display:flex;
 flex-direction:column;
 text-align:justify;
+gap: 20px,30px;
 `;
+const activeDirectory = {
+  imgUrl:
+    'https://www.freeiconspng.com/thumbs/active-directory-icon-png/active-directory-icon-png-3.png',
+  imgSize: 60,
+};
 const agilepoint = {
   imgUrl: 'https://resources.agilepoint.com/hubfs/AgilePoint%20Icon-02.png',
   imgSize: 60,
@@ -40,13 +46,13 @@ export default function AuthenticationAppTile() {
       </Heading>
       <AppTileWrap>
         <img
-          src={agilepoint.imgUrl}
+          src={activeDirectory.imgUrl}
           style={{
-            width: agilepoint.imgSize,
-            height: agilepoint.imgSize,
+            width: activeDirectory.imgSize,
+            height: activeDirectory.imgSize,
           }}
         />
-        <Flex> Agilepoint</Flex>
+        <Flex> Active Directory</Flex>
       </AppTileWrap>
     </React.Fragment>
   );
